@@ -23,11 +23,11 @@ export const getSectionByName = async (req, res) => {
 export const updateSectionContent = async (req, res) => {
   try {
     const { name } = req.params;
-    const { title, subtitle, description, items } = req.body;
+    const { title, subtitle, description, items, images, extraData } = req.body;
 
     const section = await Section.findOneAndUpdate(
       { name },
-      { title, subtitle, description, items },
+      { title, subtitle, description, items, images, extraData },
       { new: true, upsert: true }
     );
 

@@ -13,17 +13,17 @@ const About = ({ data }) => {
           <div className="flex-1 relative w-full h-[200px] lg:h-[450px]">
              {/* Center Large Circle */}
              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 lg:w-72 lg:h-72 rounded-full border-4 lg:border-8 border-white shadow-2xl overflow-hidden z-20">
-                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" className="w-full h-full object-cover" alt="Interior" />
+                <img src={data.images?.[0] || "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800"} className="w-full h-full object-cover" alt="Interior" />
              </div>
              
              {/* Top Circle */}
              <div className="absolute top-14 left-4 w-28 h-28 lg:w-48 lg:h-48 rounded-full border-2 lg:border-4 border-white shadow-xl overflow-hidden z-10">
-                <img src="https://images.unsplash.com/photo-1600607687940-47a000df3cc4?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Garden" />
+                <img src={data.images?.[1] || "https://images.unsplash.com/photo-1600607687940-47a000df3cc4?auto=format&fit=crop&q=80&w=600"} className="w-full h-full object-cover" alt="Garden" />
              </div>
 
              {/* Bottom Right Circle */}
              <div className="absolute bottom-4 right-4 w-32 h-32 lg:w-44 lg:h-44 rounded-full border-2 lg:border-4 border-white shadow-xl overflow-hidden z-30">
-                <img src="https://images.unsplash.com/photo-1628592102171-ade797814c56?auto=format&fit=crop&q=80&w=600" className="w-full h-full object-cover" alt="Lobby" />
+                <img src={data.images?.[2] || "https://images.unsplash.com/photo-1628592102171-ade797814c56?auto=format&fit=crop&q=80&w=600"} className="w-full h-full object-cover" alt="Lobby" />
              </div>
           </div>
 

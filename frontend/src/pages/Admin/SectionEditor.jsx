@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../api/axios';
 import toast from 'react-hot-toast';
-import { Save, Image as ImageIcon, Plus, Trash2, MapPin, DollarSign, BarChart3, Building } from 'lucide-react';
+import { Save, Image as ImageIcon, Plus, Trash2, MapPin, DollarSign, BarChart3, Building, RefreshCcw } from 'lucide-react';
 
 const SectionEditor = () => {
   const [sections, setSections] = useState([]);
@@ -234,6 +234,37 @@ const SectionEditor = () => {
                      <textarea value={formData.extraData?.address || ''} onChange={(e) => handleExtraDataChange('address', e.target.value)} rows="2" className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl outline-none font-bold text-sm" />
                   </div>
                </div>
+            </div>
+          )}
+
+          {/* FloorPlans Specific Data */}
+          {selectedSection.name === 'floorplans' && (
+            <div className="bg-white p-8 lg:p-12 rounded-[40px] shadow-xl border border-emerald-50 space-y-8">
+               <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600">
+                     <Building size={20} />
+                  </div>
+                  <h2 className="text-xl font-black text-gray-800 uppercase tracking-tight">FloorPlans Configuration</h2>
+               </div>
+               <div className="grid lg:grid-cols-2 gap-8">
+                  <div>
+                     <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2">Available Wings (Comma separated)</label>
+                     <input 
+                       value={formData.extraData?.wings?.join(', ') || ''} 
+                       onChange={(e) => handleExtraDataChange('wings', e.target.value.split(',').map(s => s.trim()))} 
+                       className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl outline-none font-bold text-sm" 
+                     />
+                  </div>
+                  <div>
+                     <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2">BHK Options (Comma separated)</label>
+                     <input 
+                       value={formData.extraData?.bhks?.join(', ') || ''} 
+                       onChange={(e) => handleExtraDataChange('bhks', e.target.value.split(',').map(s => s.trim()))} 
+                       className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl outline-none font-bold text-sm" 
+                     />
+                  </div>
+               </div>
+               <p className="text-[10px] text-gray-400 font-bold uppercase italic">* Note: Detailed BHK pricing/area is currently managed via seed, advanced UI coming soon.</p>
             </div>
           )}
 

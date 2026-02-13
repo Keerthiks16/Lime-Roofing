@@ -11,13 +11,22 @@ const Developer = ({ data }) => {
   return (
     <section id="developer" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-           <h2 className="text-4xl lg:text-5xl font-serif font-black text-gray-900 mb-6 tracking-tight">
-              {data.title.split(' ')[0]} <span className="text-emerald-700">{data.title.split(' ').slice(1).join(' ')}</span>
-           </h2>
-           <p className="max-w-3xl mx-auto text-gray-600 font-medium leading-relaxed">
-              {data.description}
-           </p>
+        <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
+           {data.images?.[0] && (
+             <div className="flex-1 w-full">
+                <div className="rounded-[40px] overflow-hidden shadow-2xl border-8 border-gray-50 group">
+                   <img src={data.images[0]} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" alt="Developer" />
+                </div>
+             </div>
+           )}
+           <div className={`flex-[1.2] ${!data.images?.[0] ? 'text-center mx-auto' : 'text-left'}`}>
+              <h2 className="text-4xl lg:text-5xl font-serif font-black text-gray-900 mb-6 tracking-tight">
+                 {data.title.split(' ')[0]} <span className="text-emerald-700">{data.title.split(' ').slice(1).join(' ')}</span>
+              </h2>
+              <p className="max-w-3xl mx-auto text-gray-600 font-medium leading-relaxed">
+                 {data.description}
+              </p>
+           </div>
         </div>
 
         <div className="bg-[#def8ed] rounded-[40px] p-8 lg:p-12">
