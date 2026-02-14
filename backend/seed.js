@@ -121,6 +121,14 @@ const seedData = async () => {
           { question: "Is the project RERA registered?", answer: "Yes, all our projects are fully RERA registered, ensuring transparency and accountability for all homebuyers. We strictly adhere to all legal and regulatory requirements." },
           { question: "What are the nearby connectivity options?", answer: "The project is strategically located near major highways, railway stations, and upcoming metro lines, ensuring seamless travel and excellent access to the rest of the city." }
         ]
+      },
+      {
+        name: "video",
+        title: "Project Video Tour",
+        images: ["https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=2000"],
+        extraData: {
+          videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        }
       }
     ];
 

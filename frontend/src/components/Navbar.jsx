@@ -13,10 +13,31 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    setIsMenuOpen(false);
+    
+    if (targetId === '#') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    const element = document.querySelector(targetId);
+    if (element) {
+      const offset = 80; // Adjusted for fixed navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const navLinks = [
     { name: 'Home', href: '#' },
     { name: 'Overview', href: '#overview' },
-    { name: 'Connectivities', href: '#connect' },
     { name: 'Amenities', href: '#amenities' },
     { name: 'Floor Plans', href: '#floor-plans' },
     { name: 'Developer', href: '#developer' },
@@ -29,14 +50,12 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           
           {/* Logo */}
-          <div className="flex items-center gap-2 cursor-pointer">
-             <div className="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center p-1.5 shadow-lg">
-                <svg viewBox="0 0 24 24" className="w-full h-full text-white fill-current">
-                   <path d="M12 2L4 10V21H20V10L12 2M12 4.4L18.4 10.8V19.4H5.6V10.8L12 4.4M12 7A2 2 0 0 0 10 9A2 2 0 0 0 12 11A2 2 0 0 0 14 9A2 2 0 0 0 12 7Z" />
-                </svg>
+          <div className="flex items-center gap-3 cursor-pointer" onClick={(e) => handleNavClick(e, '#')}>
+             <div className="w-12 h-12 rounded-full overflow-hidden shadow-lg border-2 border-emerald-50 bg-white">
+                <img src="/logo.jpg" alt="Vighnaharta Infinity Logo" className="w-full h-full object-contain p-1" />
              </div>
              <div className="hidden sm:block">
-                <h1 className="text-xs font-bold text-gray-400 tracking-[0.3em] uppercase leading-none mb-1">Vighnaharta</h1>
+                <h1 className="text-[10px] font-bold text-gray-400 tracking-[0.3em] uppercase leading-none mb-1">Vighnaharta</h1>
                 <h2 className="text-xl font-black text-gray-900 leading-none">INFINITY</h2>
              </div>
           </div>
@@ -47,19 +66,26 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className="text-xs font-black text-gray-600 uppercase tracking-widest hover:text-emerald-600 transition-colors"
               >
                 {link.name}
               </a>
             ))}
-            <button className="bg-[#b4ec51] text-gray-900 px-6 py-2.5 rounded-lg font-black text-xs uppercase tracking-widest hover:bg-[#a2d84a] transition-all shadow-[0_5px_15px_rgba(180,236,81,0.3)] active:scale-95">
+            <button 
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="bg-[#b4ec51] text-gray-900 px-6 py-2.5 rounded-lg font-black text-xs uppercase tracking-widest hover:bg-[#a2d84a] transition-all shadow-[0_5px_15px_rgba(180,236,81,0.3)] active:scale-95"
+            >
               Enquiry Now
             </button>
           </div>
 
           {/* Mobile Button */}
           <div className="lg:hidden flex items-center gap-4">
-             <button className="bg-[#b4ec51] text-gray-900 px-4 py-2 rounded-lg font-black text-[10px] uppercase tracking-widest">
+             <button 
+                onClick={(e) => handleNavClick(e, '#contact')}
+                className="bg-[#b4ec51] text-gray-900 px-4 py-2 rounded-lg font-black text-[10px] uppercase tracking-widest"
+             >
                 Enquiry
              </button>
              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-gray-900">
@@ -76,7 +102,7 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => handleNavClick(e, link.href)}
               className="block text-sm font-black text-gray-800 uppercase tracking-widest py-2 border-b border-gray-50"
             >
               {link.name}

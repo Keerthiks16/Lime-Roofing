@@ -10,6 +10,7 @@ import Township from '../components/Township';
 import FloorPlans from '../components/FloorPlans';
 import Developer from '../components/Developer';
 import ConstructionUpdates from '../components/ConstructionUpdates';
+import VideoTour from '../components/VideoTour';
 
 const Home = () => {
   const [content, setContent] = useState({});
@@ -45,6 +46,7 @@ const Home = () => {
       <Amenities data={content.amenities} />
       <Township data={content.township} />
       <FloorPlans data={content.floorplans} />
+      <VideoTour data={content.video} />
       <Developer data={content.developer} />
       <ConstructionUpdates data={content.construction} />
       <FAQ data={content.faq} />

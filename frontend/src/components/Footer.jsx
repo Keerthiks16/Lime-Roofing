@@ -3,6 +3,26 @@ import { Mail, Phone, MapPin, Facebook, Instagram, Twitter } from 'lucide-react'
 import EnquiryForm from './EnquiryForm';
 
 const Footer = () => {
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    if (targetId === '#') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    const element = document.querySelector(targetId);
+    if (element) {
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <footer id="contact" className="bg-gray-950 text-white pt-24 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -10,9 +30,9 @@ const Footer = () => {
           
           {/* Brand Column */}
           <div className="col-span-1">
-            <div className="flex items-center gap-2 mb-8">
-              <div className="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center shadow-lg">
-                <span className="text-white font-black text-xl">V</span>
+            <div className="flex items-center gap-3 mb-8">
+              <div className="w-12 h-12 bg-white rounded-full overflow-hidden shadow-lg border-2 border-emerald-50 p-1">
+                <img src="/logo.jpg" alt="Logo" className="w-full h-full object-contain" />
               </div>
               <div>
                 <h3 className="text-[10px] font-bold text-gray-400 tracking-[0.3em] uppercase leading-none mb-1">Vighnaharta</h3>
@@ -33,11 +53,11 @@ const Footer = () => {
           <div>
              <h4 className="text-sm font-black mb-8 uppercase tracking-[0.2em] text-[#b4ec51]">Quick Links</h4>
              <ul className="space-y-4 text-gray-400 font-bold text-xs uppercase tracking-widest">
-               <li><a href="#" className="hover:text-white transition-colors">Home</a></li>
-               <li><a href="#overview" className="hover:text-white transition-colors">Overview</a></li>
-               <li><a href="#amenities" className="hover:text-white transition-colors">Amenities</a></li>
-               <li><a href="#floor-plans" className="hover:text-white transition-colors">Floor Plans</a></li>
-               <li><a href="#developer" className="hover:text-white transition-colors">Developer</a></li>
+               <li><a href="#" onClick={(e) => handleNavClick(e, '#')} className="hover:text-white transition-colors">Home</a></li>
+               <li><a href="#overview" onClick={(e) => handleNavClick(e, '#overview')} className="hover:text-white transition-colors">Overview</a></li>
+               <li><a href="#amenities" onClick={(e) => handleNavClick(e, '#amenities')} className="hover:text-white transition-colors">Amenities</a></li>
+               <li><a href="#floor-plans" onClick={(e) => handleNavClick(e, '#floor-plans')} className="hover:text-white transition-colors">Floor Plans</a></li>
+               <li><a href="#developer" onClick={(e) => handleNavClick(e, '#developer')} className="hover:text-white transition-colors">Developer</a></li>
              </ul>
           </div>
 
@@ -77,7 +97,6 @@ const Footer = () => {
 
           {/* Enquiry Wrapper */}
           <div className="md:col-span-1">
-             <h4 className="text-sm font-black mb-8 uppercase tracking-[0.2em] text-[#b4ec51]">Enquiry Now</h4>
              <EnquiryForm />
           </div>
         </div>

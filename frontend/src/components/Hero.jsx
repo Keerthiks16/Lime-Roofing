@@ -12,8 +12,8 @@ const Hero = ({ data }) => {
           
           {/* Left Side: Text + Building Render */}
           <div className="flex-1 w-full order-2 lg:order-1 flex flex-col justify-center">
-            <div className="mb-12 pl-4 border-l-4 border-gray-900">
-               <h3 className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-1">{data.description || "20+ PODIUM LUXURIOUS AMENITIES | SPACIOUS BALCONY HOMES"}</h3>
+            <div className="mb-4 pl-4 border-l-4 border-gray-900">
+               <h3 className="text-gray-400 font-bold uppercase tracking-[0.2em] text-[10px]">{data.description || "20+ PODIUM LUXURIOUS AMENITIES | SPACIOUS BALCONY HOMES"}</h3>
                <h1 className="text-xl md:text-5xl mt-32 font-serif font-black text-gray-900 leading-tight">
                   {/* THINKING <span className="text-gray-800 font-black">OF A</span> <br />
                   <span className="text-emerald-700 italic">FANTASTIC</span> VICINITY? */}
@@ -22,7 +22,7 @@ const Hero = ({ data }) => {
             </div>
             
             <div className="relative group rounded-3xl overflow-hidden shadow-2xl border-b-4 border-emerald-500 max-w-lg bg-white z-0">
-              <div className="absolute inset-0 z-10 bg-gradient-to-b from-white via-white/20 to-transparent pointer-events-none" style={{ height: '50%' }}></div>
+              <div className="absolute inset-0 z-10 bg-gradient-to-b from-white via-white/20 to-transparent pointer-events-none" style={{ height: '70%' }}></div>
               <img 
                 src={data.images?.[0] || "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=1000"} 
                 alt="Building Render"

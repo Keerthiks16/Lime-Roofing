@@ -5,7 +5,7 @@ const About = ({ data }) => {
   if (!data) return null;
 
   return (
-    <section id="developer" className="pt-16 pb-8 min-h-[45vh] lg:h-[45vh] flex items-center bg-[#def8ed]">
+    <section id="overview" className="pt-16 pb-8 min-h-[45vh] lg:h-[45vh] flex items-center bg-[#def8ed]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           

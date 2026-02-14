@@ -1,56 +1,50 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Ruler, Users, HardHat, Rocket } from 'lucide-react';
-
-const icons = { Building2, Ruler, Users, HardHat, Rocket };
 
 const Developer = ({ data }) => {
   if (!data) return null;
   const stats = data.items || [];
   
   return (
-    <section id="developer" className="py-24 bg-white">
+    <section id="developer" className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
-           {data.images?.[0] && (
-             <div className="flex-1 w-full">
-                <div className="rounded-[40px] overflow-hidden shadow-2xl border-8 border-gray-50 group">
-                   <img src={data.images[0]} className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" alt="Developer" />
+        {/* Centered Header */}
+        <div className="text-center mb-4 max-w-4xl mx-auto">
+           <h2 className="text-4xl lg:text-5xl font-serif font-black text-[#1a3a3a] mb-6 tracking-tight">
+              {data.title || "About Developer"}
+           </h2>
+           <p className="text-gray-600 font-medium leading-relaxed text-sm">
+              {data.description}
+           </p>
+        </div>
+
+        {/* Horizontal Stats Strip */}
+        <div className="bg-[#def8ed] rounded-full px-6 py-3 mb-8 shadow-sm border border-emerald-50">
+           <div className="flex flex-wrap md:flex-nowrap justify-between items-center gap-8">
+              {stats.map((s, i) => (
+                <div key={i} className="flex flex-col items-center text-center px-4 border-r border-emerald-200/50 last:border-0 flex-1">
+                   <h3 className="text-lg md:text-xl font-black text-[#1a3a3a] mb-0.5">{s.value}</h3>
+                   <p className="text-[10px] font-black text-gray-500 uppercase tracking-widest leading-none">{s.label}</p>
                 </div>
-             </div>
-           )}
-           <div className={`flex-[1.2] ${!data.images?.[0] ? 'text-center mx-auto' : 'text-left'}`}>
-              <h2 className="text-4xl lg:text-5xl font-serif font-black text-gray-900 mb-6 tracking-tight">
-                 {data.title.split(' ')[0]} <span className="text-emerald-700">{data.title.split(' ').slice(1).join(' ')}</span>
-              </h2>
-              <p className="max-w-3xl mx-auto text-gray-600 font-medium leading-relaxed">
-                 {data.description}
-              </p>
+              ))}
            </div>
         </div>
 
-        <div className="bg-[#def8ed] rounded-[40px] p-8 lg:p-12">
-           <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-              {stats.map((s, i) => {
-                const IconComponent = icons[s.icon] || Building2;
-                return (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex flex-col items-center text-center group"
-                  >
-                     <div className="w-16 h-16 bg-white rounded-2xl shadow-lg flex items-center justify-center text-emerald-600 mb-4 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300 transform group-hover:-translate-y-1">
-                        <IconComponent size={32} />
-                     </div>
-                     <h3 className="text-2xl font-black text-gray-900 mb-1">{s.value}</h3>
-                     <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-tight">{s.label}</p>
-                  </motion.div>
-                );
-              })}
-           </div>
-        </div>
+        {/* Large Panoramic Image */}
+        <motion.div 
+           initial={{ opacity: 0, y: 50, rotateX: 5 }}
+           whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+           transition={{ duration: 1, ease: "easeOut" }}
+           viewport={{ once: true }}
+           className="relative group rounded-[40px] overflow-hidden shadow-2xl border-[12px] border-white drop-shadow-2xl aspect-[21/9]"
+        >
+           <img 
+              src={data.images?.[0] || "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1500"} 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" 
+              alt="Developer Vision" 
+           />
+           <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#def8ed]/20 to-transparent pointer-events-none"></div>
+        </motion.div>
       </div>
     </section>
   );

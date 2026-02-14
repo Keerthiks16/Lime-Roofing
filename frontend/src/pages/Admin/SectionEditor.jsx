@@ -268,6 +268,28 @@ const SectionEditor = () => {
             </div>
           )}
 
+          {/* Video Tour Specific Data */}
+          {selectedSection.name === 'video' && (
+            <div className="bg-white p-8 lg:p-12 rounded-[40px] shadow-xl border border-emerald-50 space-y-8">
+               <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600">
+                     <Play size={20} />
+                  </div>
+                  <h2 className="text-xl font-black text-gray-800 uppercase tracking-tight">Video Configuration</h2>
+               </div>
+               <div>
+                  <label className="text-[10px] font-black text-gray-400 uppercase tracking-widest block mb-2">YouTube Embed URL</label>
+                  <input 
+                    value={formData.extraData?.videoUrl || ''} 
+                    onChange={(e) => handleExtraDataChange('videoUrl', e.target.value)} 
+                    placeholder="https://www.youtube.com/embed/..."
+                    className="w-full px-4 py-3 bg-gray-50 border border-gray-100 rounded-xl outline-none font-bold text-sm" 
+                  />
+                  <p className="mt-2 text-[10px] text-gray-400 font-bold uppercase italic">* Important: Use the 'Embed' URL from YouTube, not the browser URL.</p>
+               </div>
+            </div>
+          )}
+
           {/* Section Images */}
           <div className="bg-white p-8 lg:p-12 rounded-[40px] shadow-xl border border-emerald-50 space-y-8">
             <div className="flex items-center gap-3 mb-4">

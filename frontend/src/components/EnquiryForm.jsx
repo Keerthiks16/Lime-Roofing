@@ -27,60 +27,54 @@ const EnquiryForm = () => {
   };
 
   return (
-    <div className="bg-white p-8 rounded-3xl shadow-2xl border border-emerald-50">
-      <h3 className="text-2xl font-black text-gray-800 uppercase tracking-tight mb-8 text-center italic">Enquire Now</h3>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="relative">
-          <User className="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-600" size={18} />
+    <div className="bg-white p-6 rounded-[40px] shadow-2xl border border-emerald-50 relative z-10 h-auto max-h-[50vh] flex flex-col justify-center">
+      <h3 className="text-2xl font-black text-[#1a3a3a] uppercase tracking-tight mb-6 text-center italic italic-bold">
+        Enquire Now
+      </h3>
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <div className="relative group">
+          <User className="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-500 group-focus-within:text-emerald-600 transition-colors" size={16} />
           <input
             type="text"
             placeholder="Your Name"
-            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
+            className="w-full pl-11 pr-4 py-3 bg-gray-50/80 border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 bg-white transition-all text-gray-800 text-sm font-medium"
             value={formData.name}
             onChange={(e) => setFormData({...formData, name: e.target.value})}
             required
           />
         </div>
-        <div className="relative">
-          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-600" size={18} />
-          <input
-            type="email"
-            placeholder="Email Address"
-            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
-            value={formData.email}
-            onChange={(e) => setFormData({...formData, email: e.target.value})}
-            required
-          />
-        </div>
-        <div className="relative">
-          <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-600" size={18} />
+        
+        <div className="relative group">
+          <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-emerald-500 group-focus-within:text-emerald-600 transition-colors" size={16} />
           <input
             type="tel"
             placeholder="Phone Number"
-            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
+            className="w-full pl-11 pr-4 py-3 bg-gray-50/80 border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 bg-white transition-all text-gray-800 text-sm font-medium"
             value={formData.phone}
             onChange={(e) => setFormData({...formData, phone: e.target.value})}
             required
           />
         </div>
-        <div className="relative">
-          <MessageSquare className="absolute left-4 top-4 text-emerald-600" size={18} />
+        
+        <div className="relative group">
+          <MessageSquare className="absolute left-4 top-3 text-emerald-500 group-focus-within:text-emerald-600 transition-colors" size={16} />
           <textarea
             placeholder="Your Message"
-            rows="3"
-            className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-100 rounded-2xl outline-none focus:ring-2 focus:ring-emerald-500 transition-all"
+            rows="2"
+            className="w-full pl-11 pr-4 py-3 bg-gray-50/80 border border-gray-100 rounded-xl outline-none focus:ring-2 focus:ring-emerald-500 bg-white transition-all text-gray-800 text-sm font-medium resize-none"
             value={formData.message}
             onChange={(e) => setFormData({...formData, message: e.target.value})}
           ></textarea>
         </div>
+        
         <button
           disabled={loading}
-          className="w-full bg-emerald-600 text-white font-black py-4 rounded-2xl hover:bg-emerald-700 transition-all shadow-xl shadow-emerald-100 flex items-center justify-center gap-3 uppercase tracking-widest disabled:opacity-50"
+          className="w-full bg-emerald-600 text-white font-black py-4 rounded-xl hover:bg-emerald-700 transition-all shadow-lg shadow-emerald-200/50 flex items-center justify-center gap-2 uppercase tracking-[0.1em] text-[10px] disabled:opacity-50 active:scale-95"
         >
           {loading ? 'Sending...' : (
             <>
-              <Send size={18} />
-              Submit Inquiry
+              <Send size={16} />
+              SUBMIT INQUIRY
             </>
           )}
         </button>
