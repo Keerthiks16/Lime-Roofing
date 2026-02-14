@@ -5,5 +5,6 @@ html {
 }
 
 :root {
+  --primary-green: #10b981;
 }
 @tailwind utilities;
