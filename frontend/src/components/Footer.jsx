@@ -58,6 +58,9 @@ const Footer = () => {
                <li><a href="#amenities" onClick={(e) => handleNavClick(e, '#amenities')} className="hover:text-white transition-colors">Amenities</a></li>
                <li><a href="#floor-plans" onClick={(e) => handleNavClick(e, '#floor-plans')} className="hover:text-white transition-colors">Floor Plans</a></li>
                <li><a href="#developer" onClick={(e) => handleNavClick(e, '#developer')} className="hover:text-white transition-colors">Developer</a></li>
+               <li className="pt-4 border-t border-white/5 opacity-50 hover:opacity-100 transition-opacity">
+                 <a href="/login" className="text-[9px] hover:text-emerald-400">Admin Login</a>
+               </li>
              </ul>
           </div>
 
