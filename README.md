@@ -84,4 +84,3 @@ npm run dev
 
 ---
 
-_Developed for Internship - 2024_
