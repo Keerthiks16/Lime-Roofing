@@ -11,6 +11,7 @@ import FloorPlans from '../components/FloorPlans';
 import Developer from '../components/Developer';
 import ConstructionUpdates from '../components/ConstructionUpdates';
 import VideoTour from '../components/VideoTour';
+import Loader from '../components/Loader';
 
 const Home = () => {
   const [content, setContent] = useState({});
@@ -35,7 +36,7 @@ const Home = () => {
     }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center font-black text-3xl text-emerald-600 animate-pulse tracking-tighter">LOADING...</div>;
+  if (loading) return <Loader />;
 
   return (
     <div className="min-h-screen bg-white">

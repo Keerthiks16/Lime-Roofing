@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import API from '../../api/axios';
 import toast from 'react-hot-toast';
-import { Save, Image as ImageIcon, Plus, Trash2, MapPin, DollarSign, BarChart3, Building, RefreshCcw } from 'lucide-react';
+import { Save, Image as ImageIcon, Plus, Trash2, MapPin, DollarSign, BarChart3, Building, RefreshCcw, Play } from 'lucide-react';
+import Loader from '../../components/Loader';
 
 const SectionEditor = () => {
   const [sections, setSections] = useState([]);
@@ -120,7 +121,7 @@ const SectionEditor = () => {
     }
   };
 
-  if (loading) return <div className="p-10 text-center font-bold text-emerald-600 animate-pulse">Loading Content...</div>;
+  if (loading) return <Loader />;
 
   return (
     <div className="max-w-6xl mx-auto space-y-8">

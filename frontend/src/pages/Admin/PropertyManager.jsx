@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import API from '../../api/axios';
 import toast from 'react-hot-toast';
 import { Plus, Trash2, Edit3, Save, X } from 'lucide-react';
+import Loader from '../../components/Loader';
 
 const PropertyManager = () => {
   const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [currentProp, setCurrentProp] = useState(null);
   const [formData, setFormData] = useState({
@@ -22,6 +24,8 @@ const PropertyManager = () => {
       setProperties(data);
     } catch (error) {
       toast.error('Failed to fetch properties');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -82,6 +86,8 @@ const PropertyManager = () => {
       toast.error('Operation failed');
     }
   };
+
+  if (loading) return <Loader />;
 
   return (
     <div className="space-y-8">

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import API from '../../api/axios';
 import toast from 'react-hot-toast';
 import { Mail, Phone, Clock, CheckCircle, AlertCircle } from 'lucide-react';
+import Loader from '../../components/Loader';
 
 const LeadViewer = () => {
   const [leads, setLeads] = useState([]);
@@ -32,7 +33,7 @@ const LeadViewer = () => {
     }
   };
 
-  if (loading) return <div>Loading Leads...</div>;
+  if (loading) return <Loader />;
 
   return (
     <div className="space-y-8">

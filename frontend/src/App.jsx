@@ -4,10 +4,11 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import AdminDashboard from './pages/AdminDashboard'
 import { useAuth } from './context/AuthContext'
+import Loader from './components/Loader'
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  if (loading) return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  if (loading) return <Loader />;
   if (!user) return <Navigate to="/login" />;
   return children;
 };
